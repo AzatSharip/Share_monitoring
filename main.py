@@ -5,9 +5,11 @@ import smtplib  # Импортируем библиотеку по работе 
 from email.mime.multipart import MIMEMultipart  # Многокомпонентный объект
 from email.mime.text import MIMEText  # Текст/HTML
 from email.mime.image import MIMEImage  # Изображения
+import time
 
 
 def price_checker(url):
+    time.sleep(300)
     r = requests.get(url)
     #print(r.status_code)
     soup = BeautifulSoup(r.text, features="html.parser")
