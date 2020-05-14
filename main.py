@@ -46,6 +46,8 @@ if __name__ == '__main__':
     while status:
         price, market_status = price_checker(url)
         print(market_status)
+        if 'close' in market_status:
+            
 
         if price >= 5200:
             email_sender(price)
