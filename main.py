@@ -7,6 +7,7 @@ from email.mime.text import MIMEText  # Текст/HTML
 import time
 import datetime
 import sys
+from Configurations.pw import matvei_pass
 
 
 def price_checker(url):
@@ -20,22 +21,19 @@ def price_checker(url):
     print(price)
     return price, market_status
 
-def email_sender(message):
-    addr_from = "gmail"  # Адресат
-    addr_to = "mail"  # Получатель
-    password = "pass"  # Пароль
+def gmail_sender(epass=matvei_pass, addr_from='matvei.elagin87@gmail.com', addr_to='azat.sharip@gmail.com', email_theme='Message from Python script!', message=None):
 
     msg = MIMEMultipart()  # Создаем сообщение
     msg['From'] = addr_from  # Адресат
     msg['To'] = addr_to  # Получатель
-    msg['Subject'] = 'Atention! Message from "Share-monitoring" script!'  # Тема сообщения
+    msg['Subject'] = email_theme  # Тема сообщения
 
     body = message
     msg.attach(MIMEText(body, 'plain'))  # Добавляем в сообщение текст
 
     server = smtplib.SMTP('smtp.gmail.com', 587)  # Создаем объект SMTP
     server.starttls()  # Начинаем шифрованный обмен по TLS
-    server.login(addr_from, password)  # Получаем доступ
+    server.login(addr_from, epass)  # Получаем доступ
     server.send_message(msg)  # Отправляем сообщение
     server.quit()
 
@@ -66,7 +64,7 @@ def main():
             price, market_status = price_checker(url)
 
             if price >= 5300:
-                email_sender(f'Price = {price}')
+                gmail_sender(message=f'Price = {price}')
                 print(f'Attention! Price is {price}!')
                 close_counter(30)
         else:
