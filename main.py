@@ -7,7 +7,6 @@ from email.mime.text import MIMEText  # Текст/HTML
 import time
 import datetime
 import sys
-from Configurations.pw import matvei_pass
 
 
 def price_checker(url):

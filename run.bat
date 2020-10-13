@@ -1,2 +1,2 @@
-"C:\Program Files (x86)\Python\python.exe" D:\Personal\GitHub\Share-monitoring\main.py
+"C:\Program Files (x86)\Python\python.exe" D:\path_to_script\main.py
 
