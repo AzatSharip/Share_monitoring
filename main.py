@@ -21,7 +21,7 @@ def price_checker(url):
     print(price)
     return price, market_status
 
-def gmail_sender(epass=matvei_pass, addr_from='matvei.elagin87@gmail.com', addr_to='azat.sharip@gmail.com', email_theme='Message from Python script!', message=None):
+def gmail_sender(epass='password', addr_from='your@address.com', addr_to='your@address.com', email_theme='Message from Python script!', message=None):
 
     msg = MIMEMultipart()  # Создаем сообщение
     msg['From'] = addr_from  # Адресат
